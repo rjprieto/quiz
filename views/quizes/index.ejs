@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Quiz</title>
@@ -6,9 +6,18 @@
   </head>
   <body>
     <h2>Quiz: el juego de las preguntas</h2>
+	<form method='get' action='/quizes'>
+		<input type='text' name='search' value=''/>
+		<input type='submit' value = 'Buscar'/>
+	</form>
+	<br/>
 	<table>
 		<% var i; for(i=0;i<quizes.length;i++){ %>
 			<tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
+		<% } %>
+		
+		<% if (quizes.length === 0) { %>
+			<p>No existen preguntas con esa descripción</p>
 		<% } %>
 	</table>
   </body>

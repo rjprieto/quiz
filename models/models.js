@@ -1,4 +1,4 @@
-var path = require('path');
+ï»¿var path = require('path');
 var env = require('node-env-file');
 
 env(__dirname + '/../.env');
@@ -24,11 +24,11 @@ var db = new Sequelize(DB_name, user, pwd,
 	  protocol: protocol,
 	  port: port,
 	  host: host,
-	  storage: storage, //sólo SQLite
-	  omitNull: true	//Sólo postgres
+	  storage: storage, //solo SQLite
+	  omitNull: true	//Solo postgres
 	 });
 
-//Importar definición de quiz.js
+//Importar definicion de quiz.js
 var Quiz = db.import(path.join(__dirname, 'quiz'));
 
 exports.Quiz = Quiz;
@@ -38,6 +38,8 @@ db.sync().success(function() {
 	Quiz.count().success(function(count){
 		if (count===0) {
 			Quiz.create({pregunta:'Capital de Italia', respuesta:'Roma'});
+			Quiz.create({pregunta:'Capital de EspaÃ±a', respuesta:'Madrid'});
+			Quiz.create({pregunta:'Capital de Alemania', respuesta:'Berlin'});
 			Quiz.create({pregunta:'Capital de Portugal', respuesta:'Lisboa'})
 				.success(function() { console.log('BD Inicializada') });
 		}
