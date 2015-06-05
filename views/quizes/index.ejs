@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Quiz</title>
@@ -6,7 +6,10 @@
   </head>
   <body>
     <h2>Quiz: el juego de las preguntas</h2>
-	<p><%= respuesta %></p>
-	<a href='/quizes/<%= quiz.id %>'> Reintentar</a>
+	<table>
+		<% var i; for(i=0;i<quizes.length;i++){ %>
+			<tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
+		<% } %>
+	</table>
   </body>
 </html>
