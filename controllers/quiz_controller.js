@@ -25,7 +25,7 @@ exports.index = function(req, res) {
 	console.log(searchString);
 	
 	params = {
-		where: ["pregunta like ?", searchString],
+		where: ["lower(pregunta) like ?", searchString.toLowerCase()],
 		order: 'pregunta ASC'
 	};
   }
