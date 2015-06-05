@@ -18,6 +18,10 @@ router.get('/quizes', quizController.index);
 router.get('/quizes/show', quizController.show);
 //router.get('/quizes/answer', quizController.answer);
 
+
+//Autoload de todas las rutas que reciban el parámetro :quizId
+router.param('quizId', quizController.load);
+
 router.get('/quizes/:quizId(\\d+)', quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 
