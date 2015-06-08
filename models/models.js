@@ -37,10 +37,10 @@ exports.Quiz = Quiz;
 db.sync().success(function() {
 	Quiz.count().success(function(count){
 		if (count===0) {
-			Quiz.create({pregunta:'Capital de Italia', respuesta:'Roma'});
-			Quiz.create({pregunta:'Capital de España', respuesta:'Madrid'});
-			Quiz.create({pregunta:'Capital de Alemania', respuesta:'Berlin'});
-			Quiz.create({pregunta:'Capital de Portugal', respuesta:'Lisboa'})
+			Quiz.create({pregunta:'Capital de Italia', respuesta:'Roma', tema:'Humanidades'});
+			Quiz.create({pregunta:'Capital de España', respuesta:'Madrid', tema:'Humanidades'});
+			Quiz.create({pregunta:'Capital de Alemania', respuesta:'Berlin', tema:'Humanidades'});
+			Quiz.create({pregunta:'Capital de Portugal', respuesta:'Lisboa', tema:'Humanidades'})
 				.success(function() { console.log('BD Inicializada') });
 		}
 	});

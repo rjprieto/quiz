@@ -67,7 +67,7 @@ exports.create = function (req, res) {
 		res.render('quizes/new', {quiz: quiz, errors: errors});
 	} 
 	else {
-		quiz.save( {fields: ["pregunta", "respuesta"]}).then( function() {
+		quiz.save( {fields: ["pregunta", "respuesta", "tema"]}).then( function() {
 			res.redirect("/quizes");
 		});
 
@@ -82,11 +82,11 @@ exports.edit = function (req, res) {
 
 //PUT /quizes/:id
 exports.update = function (req, res) {
-	console.log("UPDATE");
-	
 	req.quiz.pregunta = req.body.quiz.pregunta;
 	req.quiz.respuesta = req.body.quiz.respuesta;
+	req.quiz.tema = req.body.quiz.tema;
 	
+	console.dir(req.quiz);
 	
 	var e = req.quiz.validate();
 	var errors = [];
@@ -96,9 +96,17 @@ exports.update = function (req, res) {
 		res.render('quizes/edit', {quiz: req.quiz, errors: errors});
 	} 
 	else {
-		req.quiz.save( {fields: ["pregunta", "respuesta"]}).then( function() {
+		req.quiz.save( {fields: ["pregunta", "respuesta", "tema"]}).then( function() {
 			res.redirect("/quizes");
 		});
 
 	};
+}
+
+//DELETE /quizes/:id
+exports.destroy = function (req, res) {
+	req.quiz.destroy().then(
+			function() {
+				res.redirect("/quizes");
+			}).catch(function(error) { next(error) });
 }
