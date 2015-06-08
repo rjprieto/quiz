@@ -19,7 +19,21 @@
 			</nav>
 			
 			<section class="main" id="s1">
-				<%- body %>
+				<% if (errors.length > 0) {  %>
+					<span id="ErrorMsgs">
+						Corregir Errores:<br/>
+						<% for (var i in errors) { %>
+							<% console.dir(errors[i]) %>
+							<% if(errors[i].pregunta) { %>
+							<span> <%= errors[i].pregunta %></span><br/>
+							<% } %>
+							<% if(errors[i].respuesta) { %>
+							<span> <%= errors[i].respuesta %></span><br/>
+							<% } %>
+						<% } %>
+					</span>
+				<% } %>
+				<div><%- body %></div>
 			</section>
 
 		<br/>
