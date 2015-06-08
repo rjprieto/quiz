@@ -1,11 +1,4 @@
-﻿<!DOCTYPE html>
-<html>
-  <head>
-    <title>Quiz</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h2>Quiz: el juego de las preguntas</h2>
+﻿
 	<form method='get' action='/quizes'>
 		<input type='text' name='search' value=''/>
 		<input type='submit' value = 'Buscar'/>
@@ -20,5 +13,5 @@
 			<p>No existen preguntas con esa descripción</p>
 		<% } %>
 	</table>
-  </body>
-</html>
+	<br/>
+	<a href="quizes/new"><button type='button'>Crear pregunta</button></a>

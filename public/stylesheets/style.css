@@ -21,8 +21,11 @@ section > div{
 	padding: 20px;
 }
 
+header, footer {
+	text-align: center;
+}
 header, nav, section, footer {
-	background: #eee; text-align: center;
+	background: #eee; 
 }
 
 nav span {
