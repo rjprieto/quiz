@@ -8,14 +8,12 @@ body {
   font: 16px Georgia, serif;
 }
 
-#page-wrap { margin: 2%; color:white;}
+#page-wrap { margin: 2%; color:black;}
 #page-wrap > .main { 
-	border: 1px solid #999;
 	padding: 1%;
 	margin-bottom: 1px;
 	color: black;
 }
-
 
 section > div{
 	padding: 20px;
@@ -26,6 +24,7 @@ header, footer {
 }
 header, nav, section, footer {
 	background: #eee; 
+	border: 2px solid #999;
 }
 
 nav span {

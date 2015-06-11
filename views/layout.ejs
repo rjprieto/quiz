@@ -7,38 +7,43 @@
 	<link rel='stylesheet' type="text/css" media="only screen and (max-width: 480)" href='/stylesheets/smartphone.css' />
   </head>
   <body>
-	<div id="page-wrap">
-		<header " class="main" id="h1">
+	<div id="page-wrap" >
+		
+		<header class="main" id="h1"  >
 			<h2>Quiz: el juego de las preguntas</h2>
 		</header>
-
-			<nav class="main" id="n1" role="navigation">
-				<span><a href="/">Inicio</a></span>
-				<span><a href="/quizes">Preguntas</a></span>
-				<span><a href="/author">Créditos</a></span>
-			</nav>
-			
-			<section class="main" id="s1">
-				<% if (errors.length > 0) {  %>
-					<span id="ErrorMsgs">
-						Corregir Errores:<br/>
-						<% for (var i in errors) { %>
-							<% console.dir(errors[i]) %>
-							<% if(errors[i].pregunta) { %>
-							<span> <%= errors[i].pregunta %></span><br/>
-							<% } %>
-							<% if(errors[i].respuesta) { %>
-							<span> <%= errors[i].respuesta %></span><br/>
-							<% } %>
-						<% } %>
-					</span>
-				<% } %>
-				<div><%- body %></div>
-			</section>
-
-		<br/>
 		
-		<footer class="main" id="f1">
+		<div style="display: table;">
+			<div style="display: table-row-group;">
+			
+				<nav class="main" id="n1" role="navigation" style="display: table-cell;">
+					<span><a href="/">Inicio</a></span>
+					<span><a href="/quizes">Preguntas</a></span>
+					<span><a href="/author">Créditos</a></span>
+				</nav>
+				
+				<section class="main" id="s1" style="display: table-cell;">
+					<% if (errors.length > 0) {  %>
+						<span id="ErrorMsgs">
+							Corregir Errores:<br/>
+							<% for (var i in errors) { %>
+								<% console.dir(errors[i]) %>
+								<% if(errors[i].pregunta) { %>
+								<span> <%= errors[i].pregunta %></span><br/>
+								<% } %>
+								<% if(errors[i].respuesta) { %>
+								<span> <%= errors[i].respuesta %></span><br/>
+								<% } %>
+							<% } %>
+						</span>
+					<% } %>
+					<div><%- body %></div>
+				</section>
+			</div>
+			
+		</div>
+		
+		<footer class="main" id="f1" >
 			<p><a href='https://github.com/rjprieto/quiz'> Proyecto en Github</a></p>
 			<p><a href='http://es.wikipedia.org/wiki/Quiz'> ¿Qué es un quiz?</a></p>
 		</footer>

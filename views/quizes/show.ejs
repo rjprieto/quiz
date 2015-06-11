@@ -7,3 +7,10 @@
 		<br/>
 		<input type='submit' value = 'Enviar'/>
 	</form>
+	<br/><br/><br/>
+	<p><strong>Comentarios:</strong></p>
+	<% for (index in quiz.comments) { %>
+		<p>- <%= quiz.comments[index].texto %></p>
+	<%}%>
+	<br/><br/>
+	<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
