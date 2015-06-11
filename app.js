@@ -29,11 +29,30 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Helpers dinámicos
+app.use( function(req, res, next) {	//Cierra la sesión tras 120 segundos.
+	if (req.session.user && req.session.lastRequestMs) {
+		var newDate = new Date();
+		var diff = newDate - req.session.lastRequest;
+
+		console.log(newDate.getTime() - req.session.lastRequestMs);
+
+		if ( (newDate.getTime() - req.session.lastRequestMs) > 120000 ) {
+			console.log("Session closed!");
+			req.session.lastRequestMs = 0;
+			delete req.session.user;
+		}
+	}
+	next();
+});
+
 app.use( function(req, res, next) {
 	//guardar path en session.redir para después de login
 	if (!req.path.match(/\/login|\/logout/)) {
 		req.session.redir = req.path;
-		//console.log('PATH:' + req.session.redir);
+		req.session.lastRequestMs = new Date().getTime(); //Time in ms from 1970
+	}
+	else {
+		req.session.lastRequestMs = 0;
 	}
 
 	//Hacer visible req.session en las vistas
@@ -41,11 +60,15 @@ app.use( function(req, res, next) {
 	next();
 });
 
+
+
 app.use('/', routes);
 //app.use('/users', users);
 
+
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use( function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
