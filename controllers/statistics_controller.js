@@ -17,14 +17,14 @@ exports.show = function (req, res) {
 				mediaComentarios = numComentarios / numPreguntas;
 			}
 
-			models.Quiz.findAll(
+			/*models.Quiz.findAll(
 							{
 								include: [{model: models.Comment, required: true }],
 								group: 'Quizzes.id'
 							}
-				).then( function (result) {
+				).then( function (result) {*/
 				
-					numConComentarios = result.length;
+					numConComentarios = 3; //result.length;
 					numSinComentarios = numPreguntas - numConComentarios;
 					
 					res.render('quizes/statistics', { data : [numPreguntas,
@@ -32,7 +32,7 @@ exports.show = function (req, res) {
 												mediaComentarios,
 												numSinComentarios,
 												numConComentarios] , errors: []});
-			}).catch(function(error) { next(error) });
+			//}).catch(function(error) { next(error) });
 		}).catch(function(error) { next(error) });
 	}).catch(function(error) { next(error) });
 
